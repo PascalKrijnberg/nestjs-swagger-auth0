@@ -22,22 +22,30 @@ $ npm install
 ## Auth0 Configuration
 
 This nest application has a couple of endpoints that are secured with Auth0. Therefor to make it work an auth0 
-account with an Application and API needs to be configured. On the Auth0 blog there is a very detailed tutorial how to set 
+account with Application and API needs to be configured. On the Auth0 blog there is a very detailed tutorial how to set 
 up this basic stuff. 
 
 https://auth0.com/blog/developing-a-secure-api-with-nestjs-adding-authorization/
+
+To set up a correct callback from Auth0 to Swagger you have to set the allowed callback URL in 
+the Auth0 Application configuration. This is an integrated page in Swagger that will handle the token.
+
+### Allowed Callback URLs
+```
+http://127.0.0.1:8008/docs/oauth2-redirect.html
+```
+
+### .env 
 
 ```bash
 AUTH0_DOMAIN=
 AUTH0_AUDIENCE=
 ```
 
-
-
 ## Swagger
 
-For Swagger to work with Auth0 you have to set the client ID variable in the .env file. 
-This van be found in the auth0 configuration of your API.
+To set automatically the client_id in the Swagger interface you can set the client variable in the .env file. 
+This client_id can be found in the auth0 configuration of your API configuration on Auth0.
 
 ```bash
 AUTH0_OAUTH_CLIENT_ID=
